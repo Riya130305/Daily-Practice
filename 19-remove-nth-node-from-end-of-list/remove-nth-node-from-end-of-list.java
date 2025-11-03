@@ -18,15 +18,7 @@ class Solution {
             temp=temp.next;
         }
         int c=0;
-        for(int i=arr.size()-1;i>=0;i--)
-        {
-            c++;
-            if(c==n)
-            {
-                arr.remove(i);
-            }
-            
-        }
+        arr.remove(arr.size()-n);
         ListNode ans=new ListNode(0);
         ListNode dummy=ans ;
         for(int i=0;i<arr.size();i++)
