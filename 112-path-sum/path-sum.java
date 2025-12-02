@@ -26,8 +26,8 @@ class Solution {
     {
          if (root == null) return false;
          sum+=root.val;
-        if(root.left==null && root.right==null)
-        return sum==targetSum;
+        if(root.left==null && root.right==null && sum==targetSum)
+        return true;
 
         
         
