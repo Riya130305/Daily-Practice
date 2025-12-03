@@ -10,6 +10,7 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
+        // Approch 1
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for(ListNode head:lists)
         {
