@@ -21,7 +21,7 @@ class Solution {
                 pq.poll();
             }
         }
-        while(!pq.isEmpty())
+        while(pq.size()>0)
         {
             res.add(pq.poll()[0]);
         }
