@@ -1,51 +1,50 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        Queue<Integer> q= new LinkedList<>(); 
+        int[] dis= new int[numCourses];
+        ArrayList<ArrayList<Integer>> adj= new ArrayList<>(); 
+        for(int i=0;i<numCourses;i++) 
+        { 
+            adj.add(new ArrayList<Integer>()); 
+        } 
+        for(int[] edg:prerequisites) { 
+            int u=edg[0]; 
+            int v=edg[1]; 
+            adj.get(v).add(u); 
+            dis[u]++;
+        }
 
-        ArrayList<Integer> ans = new ArrayList<>();
-        
         for(int i=0;i<numCourses;i++)
         {
-            adj.add(new ArrayList<Integer>());
-        }
-        
-        int[] inDegree=new int[numCourses];
-        
-        for(int[] edg:prerequisites)
-        {
-            int u=edg[0];
-            int v=edg[1];
-            adj.get(u).add(v);
-            inDegree[v]++;
-        }
-        Queue<Integer>q=new LinkedList<>();
-        for(int i=0;i<numCourses;i++)
-        {
-            if(inDegree[i]==0)
+            if(dis[i]==0)
             {
                 q.add(i);
             }
         }
-        
+
         while(!q.isEmpty())
         {
             int val=q.poll();
-            ans.add(val);
             for(int edg:adj.get(val))
             {
-                if(inDegree[edg]!=0)
+                if(dis[edg]!=0)
                 {
-                    inDegree[edg]--;
+                    dis[edg]--;
                 }
-                if(inDegree[edg]==0)
+                if(dis[edg]==0)
                 {
-                   q.add(edg);
+                    q.add(edg);
                 }
             }
         }
-        if(ans.size()==numCourses)
+        for(int i=0;i<dis.length;i++)
+        {
+            if(dis[i]!=0)
+            {
+                return false;
+            }
+        }
         return true;
-        return false;
 
     }
 }
