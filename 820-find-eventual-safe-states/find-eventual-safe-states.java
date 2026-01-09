@@ -1,6 +1,6 @@
 class Solution {
     public List<Integer> eventualSafeNodes(int[][] graph) {
-        //ADj list is given but need to reverse the node so making the adj list again
+        //ADj list is given but need to reverse the node so making the adj list again (TOPO+BFS)
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
         for(int i=0;i<graph.length;i++)
         {
@@ -9,10 +9,10 @@ class Solution {
         int[] inDegree= new int[graph.length];
         for(int i=0;i<graph.length;i++)
         {
-            for(int edg:graph[i])
+            for(int edg:graph[i])//graph[i][0], graph[i][1]....
             {
                 adj.get(edg).add(i);
-                inDegree[i]++;
+                inDegree[i]++;//eg->0 per kitni inDegree hai
             }
         }
 
@@ -32,19 +32,16 @@ class Solution {
         {
             int val=q.poll();
             ans.add(val);
-            for(int nbr:adj.get(val))
+            for(int nbr:adj.get(val))//as adj mai humari reverse values hai
             {
-                // for(int i=0;i<nbr.length;i++)
-                // {
-                    if(inDegree[nbr]!=0)
-                    {
-                        inDegree[nbr]--;
-                    }
-                    if(inDegree[nbr]==0)
-                    {
-                        q.add(nbr);
-                    }
-                // }
+                if(inDegree[nbr]!=0)
+                {
+                    inDegree[nbr]--;
+                }
+                if(inDegree[nbr]==0)
+                {
+                    q.add(nbr);
+                }
             }
         }
         Collections.sort(ans);
