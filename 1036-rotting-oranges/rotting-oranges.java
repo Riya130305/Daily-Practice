@@ -1,8 +1,9 @@
 class Solution {
     public int orangesRotting(int[][] grid) {
+        //BFS
+        
         int n=grid.length;
         int m=grid[0].length;
-        //int count=0;
         int freshOrg=0;
         //int[][] visited= new int[n][m];
         Queue<int[]> q= new LinkedList<>();
@@ -11,6 +12,7 @@ class Solution {
         {
             for(int j=0;j<m;j++)
             {
+                //phle sare rotten oranges ek sath quue mai add kr diye haii 
                 if(grid[i][j]==2)
                 {
                     q.add(new int[]{i,j,0});
