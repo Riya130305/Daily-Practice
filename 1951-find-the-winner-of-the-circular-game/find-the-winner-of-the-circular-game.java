@@ -15,10 +15,10 @@ class Solution {
               q.add(val);
            }
             count++;
-            // if(q.size()==1)
-            // {
-            //     return val;
-            // }
+            if(q.size()==1)
+            {
+                return q.poll();
+            }
         }
         return q.poll();
     }
