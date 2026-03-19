@@ -18,11 +18,11 @@ class Solution {
                 }
                 i++;
             }
-            if(k>=zeroC)
-            {
+            // if(k>=zeroC)
+            // {
             len=j-i+1;
             max=Math.max(max,len);
-            }
+            // }
             j++;
         }
         return max;
