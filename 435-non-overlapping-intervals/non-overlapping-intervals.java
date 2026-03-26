@@ -1,5 +1,6 @@
 class Solution {
     public int eraseOverlapIntervals(int[][] arr) {
+        // Greedy solution 
         // Sort on the basic of ending intervals;
         Arrays.sort(arr,(a,b)->Integer.compare(
             a[1],b[1]
