@@ -21,6 +21,7 @@ class Solution {
         Queue<TreeNode> q = new LinkedList<>();
         arr.add(List.of(root.val));
         q.add(root);
+        int lvl=1;
         while (!q.isEmpty()) {
             int size = q.size();
             ArrayList<Integer> ans = new ArrayList<>();
@@ -35,20 +36,15 @@ class Solution {
                     ans.add(node.right.val);
                 }
             }
-            if (ans.size() != 0)
+            if (ans.size() != 0 && lvl%2==1){
+                Collections.reverse(ans);
                 arr.add(ans);
-        }
-        List<List<Integer>> res = new ArrayList<>();
-        for (int i = 0; i < arr.size(); i++) {
-            if (i % 2 == 1) {
-                ArrayList<Integer> temp = new ArrayList<>(arr.get(i));
-                Collections.reverse(temp);
-                res.add(temp);
-            } else {
-                res.add(arr.get(i));
             }
-
+            else if(ans.size() != 0){
+                arr.add(ans);
+            }
+            lvl++;
         }
-        return res;
+       return arr;
     }
 }
