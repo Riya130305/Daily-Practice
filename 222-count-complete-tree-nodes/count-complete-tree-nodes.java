@@ -14,20 +14,15 @@
  * }
  */
 class Solution {
-    static int count=0;
-    public int countNodes(TreeNode node) {
-        count=0;
-        fun(node);
-        return count;
+    public int c=0;
+    public int countNodes(TreeNode root) {
+        preOrder(root);
+       return c;
     }
-    public static void fun(TreeNode node)
-    {
-        if(node==null)
-        return;
-        count++;
-        fun(node.left);
-        fun(node.right);
-        
-    
+    public void preOrder(TreeNode root){
+        if(root==null) return;
+        c++;
+        preOrder(root.left);
+        preOrder(root.right);
     }
 }
