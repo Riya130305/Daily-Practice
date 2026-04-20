@@ -10,7 +10,7 @@ class Solution {
             while(!st.isEmpty() && temp[st.peek()]<=temp[i]){
                 st.pop();
             }
-            if(!st.isEmpty() && temp[st.peek()]>=temp[i]){
+            if(!st.isEmpty()){
                 // System.out.println("i-->"+i+" temp-->"+temp[i]+" "+Math.abs(st.peek()-i));
                 arr[i]=Math.abs(st.peek()-i);
             }
