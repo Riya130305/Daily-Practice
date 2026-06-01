@@ -17,13 +17,10 @@ class Solution {
             slow=slow.next;
             fast=fast.next.next;
         }
-        ListNode mid=slow;
-        // System.out.println("mid outside "+mid.val);
-        ListNode curr=mid;
+        ListNode curr=slow;
         ListNode prev=null;
 
         while(curr!=null){
-            System.out.println("mid "+mid.val);
             ListNode next=curr.next;
             curr.next=prev;
             prev=curr;
