@@ -3,7 +3,7 @@ class Solution {
         int n= nums.length;
         int[] arr = new int[n];
         Arrays.fill(arr,-1);
-        Stack<Integer> st = new Stack<>();
+        ArrayDeque<Integer> st = new ArrayDeque<>();
         st.push(n-1);
         for(int i=2*n-1;i>=0;i--)
         {
