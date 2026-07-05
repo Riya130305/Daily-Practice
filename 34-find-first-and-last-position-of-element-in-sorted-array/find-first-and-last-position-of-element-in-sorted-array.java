@@ -1,24 +1,43 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int n=nums.length;
         int[] arr = new int[2];
-        int k=0;
-        int c=-1;
-        boolean count=true;
+        int n=nums.length;
         Arrays.fill(arr,-1);
-        for(int i=0;i<n;i++){
-            int j=i;
-            if(nums[i]==target && count){
-                arr[0]=i;
-                count=false;
-            }
-            while(j<n && nums[j]==target){
-                c=j;
-                j++;
-            }
+        // checking in left diretion
+        int l=0;
+        int r=n-1;
+        while(l<=r){
+            int mid=l+(r-l)/2;
+
+            if(nums[mid]==target){
+                r=mid-1;
+                arr[0]=mid;
+                }
             
+            else if(nums[mid]<target){
+                l=mid+1;
+            }
+            else{
+                r=mid-1;
+            }
         }
-        arr[1]=c;
+        l=0;
+        r=n-1;
+        while(l<=r){
+            int mid=l+(r-l)/2;
+
+            if(nums[mid]==target){
+                l=mid+1;
+                arr[1]=mid;
+                }
+            
+            else if(nums[mid]<target){
+                l=mid+1;
+            }
+            else{
+                r=mid-1;
+            }
+        }
         return arr;
     }
 }
