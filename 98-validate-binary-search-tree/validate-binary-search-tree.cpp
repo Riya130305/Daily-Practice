@@ -11,7 +11,7 @@ public:
 
 
         // left
-        if(!inOrder(root->left))
+        if(inOrder(root->left)==false)
             return false;
 
 
@@ -24,7 +24,7 @@ public:
 
 
         // right
-        if(!inOrder(root->right))
+        if(inOrder(root->right)==false)
             return false;
 
 
