@@ -10,25 +10,23 @@
  * };
  */
 class Solution {
+public: 
+    TreeNode* BST(vector<int> &arr,int min, int max,int &idx){
+
+        if(idx>=arr.size() || arr[idx] < min || arr[idx] > max){
+            return nullptr;
+        }
+        TreeNode* node=new TreeNode(arr[idx++]);
+        node->left= BST(arr,min,node->val,idx);
+        node->right= BST(arr,node->val,max,idx);
+        return node;
+        
+    }    
 public:
-
-    TreeNode *buildTree(vector<int> &pre, int &index, int leftLimit, int rightLimit)
-    {
-        if(index>=pre.size()) return NULL;
-
-        if(leftLimit>=pre[index]  ||  pre[index]>=rightLimit) return NULL;
-
-        TreeNode *root = new TreeNode(pre[index++]);
-        root->left = buildTree(pre,index,leftLimit,root->val);
-        root->right = buildTree(pre,index,root->val,rightLimit);
-
-        return root;
-    }
-
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-        int leftLimit = INT_MIN;
-        int rightLimit = INT_MAX;
-        int index = 0;
-        return buildTree(preorder,index,leftLimit,rightLimit);
+        int min=INT_MIN;
+        int max=INT_MAX;
+        int idx=0;
+        return BST(preorder,min,max,idx);
     }
 };
