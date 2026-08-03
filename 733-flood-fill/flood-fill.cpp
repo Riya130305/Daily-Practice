@@ -1,15 +1,14 @@
 class Solution {
 public:
-    void dfs(int i,int j,vector<vector<int>>& image,vector<vector<bool>>& visited,int val,int color){
-        if(i<0 || j<0 || i>image.size()-1 || j>image[0].size()-1 || image[i][j]!=val || visited[i][j]==true) return;
+    void dfs(int i,int j,vector<vector<int>>& image,int val,int color){
+        if(i<0 || j<0 || i>image.size()-1 || j>image[0].size()-1 || image[i][j]!=val) return;
 
         image[i][j]=color;
-        visited[i][j]=true;
 
-        dfs(i,j-1,image,visited,val,color) ;
-        dfs(i-1,j,image,visited,val,color);
-        dfs(i,j+1,image,visited,val,color);
-        dfs(i+1,j,image,visited,val,color);
+        dfs(i,j-1,image,val,color) ;
+        dfs(i-1,j,image,val,color);
+        dfs(i,j+1,image,val,color);
+        dfs(i+1,j,image,val,color);
     }
        
 
@@ -19,16 +18,14 @@ public:
         int m=image[0].size();
         
      //   vector<vector<int>> arr(n,vector<int>(m)); //sc -> O(N2)
-        vector<vector<bool>> visited(n,vector<bool>(m,false)); //sc -> O(N2)
-
-      
+        //vector<vector<bool>> visited(n,vector<bool>(m,false)); //sc -> O(N2)
 
         int val=image[sr][sc];
 
         if(val==color)
-    return image;
+        return image;
         
-       dfs(sr,sc,image,visited,val,color);
+       dfs(sr,sc,image,val,color);
 
         return image;
     }
