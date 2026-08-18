@@ -11,10 +11,10 @@ class Solution {
             }
             if(!map.containsKey(s.charAt(j))){
                 map.put(s.charAt(j),1);
-                j++;
+                
             }
-            max=Math.max(max,j-i);
-           
+            max=Math.max(max,j-i+1);
+           j++;
         }
         return max;
     }
