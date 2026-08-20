@@ -7,14 +7,14 @@ class Solution {
         while(s<=e){
             int mid=s+(e-s)/2;
             if(fun(arr,h,mid)<=h){
-                // ans=mid;
+                ans=mid;
                 e=mid-1;
             }
             else{
                 s=mid+1;
             }
         }
-        return s;
+        return ans;
     }
     public int fun(int[] arr, int h, int mid){
         int sum=0;
