@@ -7,7 +7,7 @@ class Solution {
             sum+=nums[j];
             //System.out.println("sum+:"+sum);
 
-            while(j-i+1>k){
+            if(j-i+1>k){
                 sum-=nums[i];
                 //System.out.println("sum-:"+sum);
                 i++;
