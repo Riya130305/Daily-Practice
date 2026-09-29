@@ -1,20 +1,13 @@
-SELECT product_id, new_price AS price
+SELECT 
+    p.product_id
+    ,COALESCE((
+        SELECT pr.new_price
+        FROM products pr
+        WHERE p.product_id=pr.product_id
+            AND pr.change_date<='2019-08-16'
+        ORDER BY pr.change_date DESC LIMIT 1
+    ),10) AS price
 FROM (
-    SELECT product_id,
-           new_price,
-           change_date,
-           ROW_NUMBER() OVER (
-               PARTITION BY product_id
-               ORDER BY change_date DESC
-           ) AS rn
-    FROM Products
-    WHERE change_date <= '2019-08-16'
-) t
-WHERE rn = 1
-
-UNION
-
-SELECT product_id, 10 AS price
-FROM Products
-GROUP BY product_id
-HAVING MIN(change_date) > '2019-08-16';
+    SELECT DISTINCT product_id
+    FROM products 
+) AS p
